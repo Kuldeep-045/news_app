@@ -18,7 +18,7 @@ export const fetchAndStoreNews = async (req, res) => {
       const { id, url, score, descendants, title, by, time } = storyDetails;
 
       // Check if the news item already exists in the database
-      const existingNewsItem = await NewsItem.findOne({ id });
+      const existingNewsItem = await NewsItem.findOne({ id, user:userId });
 
       if (existingNewsItem) {
         // If it exists, update upvotes and comments
