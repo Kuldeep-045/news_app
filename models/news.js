@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const hackerNewsItemSchema = new mongoose.Schema({
-  id: { type: Number, required: true, unique: true },
+  id: { type: Number, required: true},
   url: { type: String },
   hackerNewsUrl: { type: String },
   postedOn: { type: String },
@@ -22,6 +22,6 @@ hackerNewsItemSchema.pre(/^find/, function () {
   this.where({ isDeleted: { $ne: true } });
 });
 
-hackerNewsItemSchema.index({ id: 1}, { unique: true });
+hackerNewsItemSchema.index({ id: 1, user: 1 }, { unique: true });
 
 export const NewsItem = mongoose.model('HackerNewsItem', hackerNewsItemSchema);
