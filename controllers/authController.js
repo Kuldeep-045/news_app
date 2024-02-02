@@ -9,7 +9,6 @@ import jwt from "jsonwebtoken"
 
 const sendCookies = (user, res, message, statusCode) => {
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    console.log(token);
     res
         .status(statusCode)
         .cookie("token", token, {
@@ -31,7 +30,6 @@ export const signup = async (req, res) => {
         if(!email || !name || !password){
             res.status(500).json({ success: false, error: "email and name and password" });
         }
-        console.log(userExist);
         if (userExist) {
             // User already exists
             res.status(500).json({ success: false, error: 'User already exist' });

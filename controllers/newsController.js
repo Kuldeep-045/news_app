@@ -10,7 +10,7 @@ export const fetchAndStoreNews = async (req, res) => {
 
     // Iterate over news items
     const userId=req.user._id;
-    for (const storyId of newStoriesIds.slice(0, 10)) {
+    for (const storyId of newStoriesIds.slice(0, 90)) {
       const storyResponse = await fetch(`https://hacker-news.firebaseio.com/v0/item/${storyId}.json`);
       const storyDetails = await storyResponse.json();
 
